@@ -1,0 +1,412 @@
+/* frontend/src/NewDeviationFormTest.css (Simple List Form Styling - Final) */
+
+.new-deviation-form-container {
+  background-color: #f0fff0; /* Light green background */
+  margin: 20px auto;
+  padding: 30px;
+  max-width: 800px; /* Max width for a single column list */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  text-align: left;
+}
+
+.new-deviation-form-container h2 {
+  color: #38761d;
+  font-size: 2em;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #38761d;
+  padding-bottom: 5px;
+}
+
+.form-intro-text {
+  margin-bottom: 20px;
+  font-style: italic;
+  color: #666;
+  text-align: center;
+}
+
+.simple-form-layout {
+  display: flex;
+  flex-direction: column; /* Stack fields vertically */
+  gap: 20px; /* Space between major field groups */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  font-family: Arial, sans-serif;
+  font-size: 0.95em;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field-group label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 1em;
+}
+
+.form-field-group input[type="text"],
+.form-field-group input[type="number"],
+.form-field-group input[type="date"],
+.form-field-group select,
+.form-field-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+/* Specific styles for elements within sections */
+.header-field input,
+.approval-group input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  padding: 5px 0;
+  font-size: 1em;
+}
+
+.header-logo-text, .section-title-mock {
+  font-weight: bold;
+  color: #00843D;
+  font-size: 1.2em;
+  margin-top: 20px; /* Space above section titles */
+  margin-bottom: 10px;
+  border-bottom: 1px solid #00843D;
+  padding-bottom: 5px;
+}
+
+.header-logo-text {
+    text-align: center;
+}
+
+
+/* Checkbox rows */
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between checkboxes and labels */
+  flex-wrap: wrap; /* Allow wrapping */
+}
+.checkbox-row label {
+  font-weight: normal; /* Labels for checkboxes are not bold by default */
+  margin-bottom: 0;
+}
+.checkbox-row input[type="checkbox"] {
+  width: auto;
+  margin-top: 0;
+}
+.conditional-input-mock {
+    margin-left: 10px;
+    width: 200px; /* Example width for conditional input */
+}
+
+
+/* Grid for affected plants (still useful for checkboxes) */
+.checkbox-grid-mock {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive columns */
+  gap: 10px;
+  margin-top: 10px;
+}
+.checkbox-item-mock {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.checkbox-item-mock label {
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+/* Actions Section Mock */
+.actions-section-mock {
+    border: 1px dashed #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    margin-top: 10px;
+}
+.actions-section-mock .section-description {
+    font-style: italic;
+    color: #888;
+    margin-bottom: 15px;
+}
+.mock-action-item {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+}
+.mock-action-item p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+}
+.action-fields-mock {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Label then input */
+    gap: 10px;
+    align-items: center;
+}
+.action-fields-mock label {
+    font-weight: normal;
+    text-align: right;
+    width: 100px; /* Align labels */
+}
+.action-fields-mock input, .action-fields-mock textarea {
+    width: auto;
+    flex-grow: 1;
+}
+.add-action-mock-button {
+    background-color: #00843D;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+.add-action-mock-button:hover {
+    background-color: #017537;
+}
+
+/* Drawing Table Mock */
+.drawing-table-mock {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns for drawing info */
+  gap: 0px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+}
+.drawing-table-header-mock {
+  display: contents; /* Allows children to participate in parent grid */
+}
+.drawing-table-header-mock span {
+  padding: 8px;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  background-color: #e0f0e0;
+  color: #333;
+  font-size: 0.85em;
+  font-weight: bold;
+}
+.drawing-table-header-mock span:last-child {
+  border-right: none;
+}
+.drawing-table-row-mock {
+  display: contents; /* Allows children to participate in parent grid */
+}
+.drawing-table-row-mock input {
+  padding: 8px;
+  border: none;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  border-radius: 0;
+  font-size: 0.85em;
+  background-color: white;
+}
+.drawing-table-row-mock input:last-child {
+  border-right: none;
+}
+
+/* Approvals Section */
+.approval-fields {
+  display: grid;
+  grid-template-columns: 1fr; /* Stacked columns for simplicity in list view */
+  gap: 15px;
+  margin-top: 10px;
+}
+.approval-group {
+  display: flex;
+  flex-direction: column;
+}
+.approval-group label {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 3px;
+  font-weight: normal;
+}
+.approval-group input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  padding: 5px 0;
+  font-size: 1em;
+}
+.quality-director-group {
+  margin-top: 15px; /* Space for this specific approval field */
+}
+
+/* Description of Deviation (Rich Text Placeholder) */
+.placeholder-text {
+    font-style: italic;
+    color: #888;
+    border: 1px dashed #ccc;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* General button styling for this mock-up form */
+.form-buttons-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px; /* More space above buttons */
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.form-buttons-group button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-buttons-group .submit-button {
+  background-color: #00843D; /* Rain Bird Green */
+  color: white;
+}
+
+.form-buttons-group .submit-button:hover {
+  background-color: #017537;
+  transform: translateY(-1px);
+}
+
+.form-buttons-group .cancel-button {
+  background-color: #6c757d; /* Grey */
+  color: white;
+}
+
+.form-buttons-group .cancel-button:hover {
+  background-color: #5a6268;
+  transform: translateY(-1px);
+}
+
+/* Responsive adjustments for simple list form */
+@media (max-width: 768px) {
+  .new-deviation-form-container {
+    padding: 15px;
+    margin: 10px auto;
+  }
+  .simple-form-layout {
+    padding: 15px;
+    gap: 15px;
+  }
+  .checkbox-grid-mock {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  .drawing-table-mock {
+    grid-template-columns: 1fr; /* Stack drawing table columns on very small screens */
+  }
+  .drawing-table-header-mock span,
+  .drawing-table-row-mock input {
+    border-right: none; /* Remove right borders when stacked */
+  }
+  .action-fields-mock {
+    grid-template-columns: 1fr; /* Stack action fields */
+  }
+  .action-fields-mock label {
+    text-align: left;
+    width: auto;
+  }
+}
+
+/* Image Text Editor Integration */
+.image-text-editor {
+  border: 2px solid #38761d !important;
+  border-radius: 8px !important;
+  background-color: #ffffff !important;
+  margin-top: 10px;
+}
+
+.image-text-editor .editor-section h4 {
+  color: #38761d;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #38761d;
+}
+
+.image-text-editor .instructions {
+  background-color: #f0fff0 !important;
+  border: 1px solid #38761d !important;
+  color: #2e7d0a !important;
+}
+
+.image-text-editor .controls button {
+  background-color: #38761d !important;
+  transition: background-color 0.2s ease;
+}
+
+.image-text-editor .controls button:hover {
+  background-color: #2e7d0a !important;
+}
+
+.image-text-editor .controls button.danger {
+  background-color: #d32f2f !important;
+}
+
+.image-text-editor .controls button.danger:hover {
+  background-color: #b71c1c !important;
+}
+
+.image-text-editor .canvas-container {
+  border: 2px dashed #38761d !important;
+  background-color: #fafafa;
+}
+
+.image-text-editor .simple-rich-text-editor {
+  border: 1px solid #38761d !important;
+}
+
+.image-text-editor .simple-rich-text-editor .toolbar {
+  background-color: #f0fff0 !important;
+  border-bottom: 1px solid #38761d !important;
+}
+
+.image-text-editor .simple-rich-text-editor .toolbar button:hover {
+  background-color: #e8f5e8 !important;
+}
+
+/* Responsive adjustments for image editor */
+@media (max-width: 768px) {
+  .image-text-editor .canvas-container {
+    overflow-x: auto;
+  }
+  
+  .image-text-editor .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .image-text-editor .text-input-group {
+    flex-direction: column;
+  }
+  
+  .image-text-editor .text-input-group input {
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,779 @@
+/* deviation_tracker_app/frontend/src/App.css (CONSOLIDATED RAIN BIRD THEME - MODIFIED BUTTONS) */
+
+/* Base Styles */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f0fff0; /* Very light green/white for body background */
+    color: #333; /* Dark grey text */
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+.App {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    /* background-color: #f4f7f6; Removed as body handles background */
+}
+
+/* Header Styling (Rain Bird Theme) */
+.App-header-custom {
+    background-color: #00843D; /* Rain Bird Green */
+    padding: 15px 30px;
+    color: white;
+    font-size: calc(6.5px + 1vmin);
+    border-bottom: 3px solid #d4edda; /* Light green accent */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between; /* Pushes title to left, nav to right */
+    align-items: center; /* Vertically centers items */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rainbird-logo { /* Logo within header */
+    height: 40px; /* Adjust size as needed */
+    margin-right: 15px; /* Space between logo and title */
+    flex-shrink: 0; /* Prevent logo from shrinking */
+    transform: translateY(-4px);
+}
+
+.App-header-custom h1 {
+    margin: 0;
+    font-size: 2.2em;
+    color: white; /* Title text color */
+    flex-shrink: 0; /* Prevent title from shrinking */
+}
+
+.App-header-custom nav {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between nav links and user info */
+    flex-grow: 1; /* Allow nav to grow and push content to the right */
+    justify-content: flex-end; /* Push content to the far right within the nav */
+}
+
+.App-header-custom nav .nav-link {
+    margin: 0;
+    padding: 8px 15px;
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly transparent white for links */
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    font-size: 0.95em;
+    border: none;
+}
+
+.App-header-custom nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+.user-info {
+    color: white; /* Text color for "Hello, Username!" */
+    font-size: 0.9em;
+    margin-left: 20px; /* Space from last nav link */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between text and button */
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.logout-button {
+    background-color: #d9534f; /* Red for logout */
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #c9302c;
+}
+
+/* Deviation Matrix Table */
+.deviation-matrix-container {
+    overflow-x: auto;
+    margin: 20px auto;
+    max-width: 95%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: white;
+}
+
+.deviation-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 0.9em;
+}
+
+.deviation-table th,
+.deviation-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.deviation-table th {
+    background-color: #00843D; /* Rain Bird Green for table header */
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 12px 8px;
+}
+
+.deviation-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.deviation-table tbody tr:hover {
+    background-color: #e0e0e0; /* Lighter hover color */
+}
+
+/* Action List and Item Styling (on Detail Page) */
+.deviation-table ul, .action-list { /* Combined for consistency */
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+    font-size: 0.85em;
+}
+
+.deviation-table ul li, .action-item {
+    margin-bottom: 2px;
+    color: #555;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex; /* Flex for details and buttons */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.action-item-details { /* Group action description/responsible/date */
+    flex-grow: 1;
+    min-width: 60%;
+    margin-right: 10px;
+}
+
+.action-item-details p {
+    margin: 5px 0;
+}
+
+.action-buttons-group { /* For edit/delete buttons */
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+.action-edit-button, .action-delete-button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.action-edit-button {
+    background-color: #ffc107; /* Orange for edit */
+    color: #333;
+}
+
+.action-edit-button:hover {
+    background-color: #e0a800;
+}
+
+.action-delete-button {
+    background-color: #dc3545; /* Red for delete */
+    color: white;
+}
+
+.action-delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Deviation Detail Page */
+.deviation-detail-container {
+    background-color: white;
+    margin: 20px auto;
+    padding: 30px;
+    max-width: 80%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.detail-section {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.detail-section h3 {
+    color: #38761d; /* Rain Bird Green for section titles */
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #38761d; /* Matching green border */
+    padding-bottom: 5px;
+}
+
+.detail-section p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+/* Container for action buttons on detail page (e.g., Back, Edit, Delete) */
+.deviation-actions-group {
+    display: flex;
+    gap: 15px; /* Increased space between buttons */
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: flex-end; /* Push buttons to the right */
+    margin-left: auto; /* Push them further to the right, away from 'Back to All Deviations' */
+}
+
+/* Base styling for all main action links/buttons */
+.back-link,
+.edit-link,
+.delete-button,
+.add-action-button,
+.action-edit-button,
+.action-delete-button {
+    display: inline-block;
+    padding: 10px 20px; /* Slightly more padding */
+    border-radius: 8px; /* Softer rounded corners */
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    cursor: pointer;
+    font-size: 0.9em; /* Slightly adjusted font size */
+    white-space: nowrap; /* Prevent text from wrapping */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border: none; /* Remove default border for cleaner look */
+}
+
+.back-link {
+    background-color: #6c757d; /* Muted grey */
+    color: white;
+}
+
+.back-link:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px); /* Lift effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- MODIFIED EDIT DEVIATION BUTTON --- */
+.edit-link {
+    background-color: #00843D; /* Rain Bird Green */
+    color: white;
+}
+
+.edit-link:hover {
+    background-color: #017537; /* Slightly darker green */
+    transform: translateY(-2px); /* Lift effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- MODIFIED DELETE DEVIATION BUTTON --- */
+.delete-button {
+    background-color: #d9534f; /* A more prominent red for danger */
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #c9302c; /* Darker red on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-action-button {
+    background-color: #38761d; /* Rain Bird Green for add button */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-action-button:hover {
+    background-color: #1e4913; /* Darker green */
+}
+
+/* Form Styles (DeviationForm and ActionForm) */
+.deviation-form-container, .action-form-container {
+    background-color: white;
+    margin: 20px auto;
+    padding: 30px;
+    max-width: 600px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.action-form-container { /* Specific styling for action forms */
+    background-color: #f0fff0; /* Very light green for action form background */
+    border: 1px solid #8fbc8f;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.deviation-form h3, .action-form-container h3 {
+    color: #38761d; /* Rain Bird Green for form titles */
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #38761d;
+    padding-bottom: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    width: calc(100% - 22px); /* Adjust for padding and border */
+    padding: 10px;
+    border: 1px solid #ccc; /* Lighter border */
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.form-group input[type="checkbox"] {
+    margin-top: 10px;
+    width: auto;
+}
+
+.deviation-form button[type="submit"], .action-form button[type="submit"] {
+    background-color: #38761d; /* Rain Bird Green submit button */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 15px;
+}
+
+.deviation-form button[type="submit"]:hover:not(:disabled),
+.action-form button[type="submit"]:hover:not(:disabled) {
+    background-color: #1e4913; /* Darker green on hover */
+}
+
+.deviation-form button[type="submit"]:disabled,
+.action-form button[type="submit"]:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.submit-message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.submit-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.submit-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.required-field {
+    color: #d9534f; /* Red for required fields */
+    margin-left: 5px;
+}
+
+/* Status Selector Styling (Rain Bird Colors) */
+.action-status-select {
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.85em;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #f9f9f9;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-25.3%200L145.2%20202.7%2034.4%2069.4a17.6%2017.6%200%200%200-25.3%2025.3l124.7%20124.7a17.6%2017.6%200%200%200%2025.3%200l124.7-124.7a17.6%2017.6%200%200%200%200-25.3z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 12px;
+    min-width: 150px; /* Adjust as needed for your longest text */
+    padding-right: 35px; /* More space for the arrow */
+}
+
+/* Colors for Selector and Status Badges */
+.action-status-select.status-not-started, .deviation-status.status-not-started {
+    background-color: #e0e0e0; /* Lighter gray */
+    color: #666;
+}
+
+.action-status-select.status-in-progress, .deviation-status.status-in-progress {
+    background-color: #ffc107; /* Orange/Yellow */
+    color: #856404;
+}
+
+.action-status-select.status-done, .deviation-status.status-done {
+    background-color: #38761d; /* Rain Bird Green */
+    color: white;
+}
+
+.action-status-select.status-delayed, .deviation-status.status-delayed {
+    background-color: #e91010; /* Red */
+    color: white;
+}
+
+/* Styling for <option> elements in the dropdown list (limited cross-browser control) */
+.action-status-select option {
+    font-weight: normal;
+    padding: 5px;
+    /* Background and color will likely only apply to the selected item in the closed select,
+        not the items in the opened dropdown list due to browser native rendering. */
+}
+
+/* Login Page Styling (Rain Bird Theme) */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #e0f0e0; /* Very light green for login page background */
+    font-family: Arial, sans-serif;
+}
+
+.login-header {
+    background-color: #38761d; /* Rain Bird Green */
+    width: 100%;
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+    border-bottom: 5px solid #d4edda;
+    margin-bottom: 30px;
+}
+
+.login-form-wrapper {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.login-form h2 {
+    color: #38761d; /* Rain Bird Green */
+    margin-bottom: 25px;
+    font-size: 2em;
+}
+
+.login-form .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.login-form label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.login-form input { /* Applies to all input types without specific type selector */
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.login-form button { /* Applies to all buttons without specific type selector */
+    background-color: #017537; /* Rain Bird Green */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.login-form button:hover:not(:disabled) {
+    background-color: #1e4913; /* Darker Green */
+}
+
+.login-form button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Error message styling - shared with other forms */
+.error-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Autocomplete Container */
+.autocomplete-container {
+    position: relative; /* Essential for positioning suggestions list */
+}
+
+/* Suggestions List */
+.suggestions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute; /* Position relative to .autocomplete-container */
+    top: 100%; /* Place below the input */
+    left: 0;
+    right: 0;
+    border: 1px solid #ddd;
+    border-top: none;
+    max-height: 200px; /* Limit height and add scroll */
+    overflow-y: auto;
+    background-color: white;
+    z-index: 1000; /* Ensure it appears above other elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 5px 5px;
+}
+
+.suggestions-list li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    color: #333;
+}
+
+.suggestions-list li:last-child {
+    border-bottom: none;
+}
+
+.suggestions-list li:hover {
+    background-color: #f0f0f0; /* Light gray on hover */
+}
+
+
+
+.general-info-layout {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 0; 
+    justify-content: flex-start; 
+    align-items: flex-start;
+}
+
+.general-info-text {
+    flex: 0 0 auto; 
+    min-width: 300px; 
+    max-width: 550px; 
+    box-sizing: border-box;
+    padding-right: 20px; 
+}
+
+.attachment-preview-container {
+    flex: 1; 
+    min-width: 550px; 
+    max-width: none;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.pdf-preview, .image-preview {
+    width: 100%; 
+    height: 300px; 
+    border: 1px solid #eee;
+    border-radius: 5px;
+    object-fit: contain; 
+    background-color: #fff;
+}
+
+.pdf-preview {
+    height: 450px; 
+}
+
+/* Group for form buttons (Submit and Cancel) */
+.action-form-container .form-buttons-group {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    margin-top: 15px;
+    justify-content: flex-end; /* Align buttons to the right */
+    align-items: center;
+    width: 100%; /* Ensure the group takes full width for alignment */
+    box-sizing: border-box; /* Include padding/border in width */
+}
+
+/* Base styling for ALL buttons within the action form container's button group */
+.action-form-container .form-buttons-group button {
+    width: auto;
+    flex-grow: 0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    line-height: 1.2;
+    height: 40px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    vertical-align: middle; /* <--- NEW: Explicit vertical alignment */
+    margin-bottom: 0; /* <--- NEW: Ensure no residual bottom margin */
+}
+
+/* Style for the Submit button in ActionForm (inherits base styles, just sets color) */
+.action-form-container button[type="submit"] {
+    background-color: #38761d; /* Rain Bird Green */
+    color: white;
+}
+
+.action-form-container button[type="submit"]:hover:not(:disabled) {
+    background-color: #1e4913; /* Darker green on hover */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.action-form-container button[type="submit"]:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Style for the Cancel button in ActionForm (inherits base styles, just sets color) */
+.action-form-container .cancel-button {
+    background-color: #6c757d; /* Grey color for cancel */
+    color: white;
+    transform: translateY(7px);
+}
+
+.action-form-container .cancel-button:hover {
+    background-color: #5a6268;
+    transform: translateY(6px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.selected-users-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; /* Space between tags */
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    background-color: #f9f9f9;
+    min-height: 40px; /* Ensure it's visible even with no tags */
+    align-items: center;
+}
+
+.user-tag {
+    display: inline-flex;
+    align-items: center;
+    background-color: #e0f0e0; /* Light green background */
+    color: #38761d; /* Rain Bird Green text */
+    padding: 5px 10px;
+    border-radius: 15px; /* Pill shape */
+    font-size: 0.85em;
+    font-weight: bold;
+    gap: 5px;
+}
+
+.remove-tag-button {
+    background: none;
+    border: none;
+    color: #38761d;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 0 3px;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.remove-tag-button:hover {
+    color: #d9534f; /* Red on hover for removal */
+}
+
+/* Adjust the autocomplete list to appear above tags if necessary */
+.form-group.autocomplete-container {
+    position: relative; /* Ensure suggestions list is positioned correctly */
+}
+
+/* Ensure the input field inside autocomplete container aligns well */
+.autocomplete-container input[type="text"] {
+    width: 100%; /* Make the input fill the available space */
+    box-sizing: border-box; /* Include padding/border in width */
+}
+
+
+
