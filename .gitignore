@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 *.so
 .Python
+.venv/
 venv/
 env/
 ENV/
@@ -13,7 +14,6 @@ ENV/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-media/
 
 # Node.js
 node_modules/
