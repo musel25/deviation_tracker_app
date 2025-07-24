@@ -44,6 +44,5 @@ ehthumbs.db
 Thumbs.db
 
 # Security
-all_user_passwords.txt
 *.key
 *.pem
