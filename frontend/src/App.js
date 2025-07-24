@@ -2,7 +2,7 @@
 
 import rainbirdLogo from './assets/rainbird_logo.png';
 import React, { useState, useEffect, useCallback } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
 import DeviationList from './DeviationList';
 import DeviationForm from './DeviationForm';
@@ -10,7 +10,7 @@ import DeviationDetail from './DeviationDetail';
 import Login from './Login'; // Corrected import name: Login
 import { AuthProvider, useAuth } from './AuthContext';
 import NewDeviationFormTest from './NewDeviationFormTest';
-import DeviationSheet from './DeviationSheet'; 
+ 
 
 // PrivateRoute component to protect routes
 // eslint-disable-next-line no-unused-vars
@@ -26,6 +26,7 @@ function PrivateRoute({ children }) {
 // AppContent component to use useAuth hook
 const AppContent = () => {
   const { user, isAuthenticated, logout, accessToken, loading: authLoading } = useAuth();
+  const navigate = useNavigate();
   const [deviations, setDeviations] = useState([]);
   const [deviationDataLoading, setDeviationDataLoading] = useState(true);
   const [deviationDataError, setDeviationDataError] = useState(null);
@@ -80,6 +81,16 @@ const AppContent = () => {
     fetchDeviations();
   };
 
+  const handleViewAllDeviations = () => {
+    setFilterMode('all');
+    navigate('/');
+  };
+
+  const handleViewMyDeviations = () => {
+    setFilterMode('my');
+    navigate('/');
+  };
+
   // --- REFINED RENDERING LOGIC ---
   // If authentication is still loading, show a loading message
   if (authLoading) {
@@ -110,7 +121,7 @@ const AppContent = () => {
           <>
             {/* Button for View All Deviations */}
             <button
-              onClick={() => setFilterMode('all')}
+              onClick={handleViewAllDeviations}
               className="nav-link"
               style={{ backgroundColor: filterMode === 'all' ? '#017537' : 'rgba(255, 255, 255, 0.15)' }}
             >
@@ -119,7 +130,7 @@ const AppContent = () => {
 
             {/* Button for View My Deviations */}
             <button
-              onClick={() => setFilterMode('my')}
+              onClick={handleViewMyDeviations}
               className="nav-link"
               style={{ backgroundColor: filterMode === 'my' ? '#017537' : 'rgba(255, 255, 255, 0.15)' }}
             >
@@ -132,8 +143,6 @@ const AppContent = () => {
             {/* NEW "Create New Deviation (Mock)" button (for mock-up) */}
             <Link to="/deviations/new-form-test" className="nav-link">Create New Deviation (Mock)</Link>
 
-            {/* NEW "New Deviation Sheet" button (Excel-based form) */}
-            <Link to="/deviations/new-sheet" className="nav-link">New Deviation Sheet</Link>
 
             <span className="user-info">
               Hello, {user ? user.username : 'Guest'}!
@@ -156,7 +165,6 @@ const AppContent = () => {
                 <Route path="/deviations/:devNumber" element={<PrivateRoute><DeviationDetail onDataChanged={handleRefresh} /></PrivateRoute>} />
                 <Route path="/deviations/:devNumber/edit" element={<PrivateRoute><DeviationForm onDeviationCreatedOrUpdated={handleRefresh} /></PrivateRoute>} />
                 <Route path="/deviations/new-form-test" element={<PrivateRoute><NewDeviationFormTest /></PrivateRoute>} />
-                <Route path="/deviations/new-sheet" element={<PrivateRoute><DeviationSheet workbookUrl="/deviationtemplate.xlsx" fileName="Deviation_filled.xlsx" /></PrivateRoute>} />
                 
                 {/* Fallback for any other unmatched routes when authenticated */}
                 <Route path="*" element={<Navigate to="/" replace />} />
