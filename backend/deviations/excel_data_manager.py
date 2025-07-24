@@ -9,7 +9,7 @@ from .models import Deviation, Action # Import your Django models
 # Define the absolute path to your Excel file directly.
 # IMPORTANT: REPLACE THIS WITH THE EXACT ABSOLUTE PATH TO YOUR Deviation_Matrix.xlsx file.
 # Example: EXCEL_FILE_PATH = r"C:\Users\ersosa\Documents\Dev_tracker_app\Deviation_Matrix.xlsx"
-EXCEL_FILE_PATH = r"C:\Users\ersosa\Documents\deviation_tracker_app\Deviation_Matrix.xlsx" # <--- YOUR HARDCODED PATH HERE! CONFIRM IT!
+EXCEL_FILE_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Deviation_Matrix.xlsx')
 
 def import_deviations_from_excel_to_db():
     """

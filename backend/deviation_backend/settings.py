@@ -116,7 +116,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Media files (for user uploads) - KEEP THIS SECTION ONLY ONCE
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media' # Use Path object directly for cleaner path joining
+MEDIA_ROOT = BASE_DIR.parent / 'media' # Go up one level to access the main media folder
 
 
 REST_FRAMEWORK = {
