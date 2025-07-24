@@ -100,53 +100,6 @@ Follow prompts to create an admin user for Django admin interface.
 python manage.py runserver
 ```
 
-### Verification Commands
-
-Verify the import was successful:
-
-```bash
-# Check data counts
-python manage.py shell -c "
-from django.contrib.auth.models import User
-from deviations.models import Deviation, Action
-print(f'Users: {User.objects.count()}')
-print(f'Deviations: {Deviation.objects.count()}') 
-print(f'Actions: {Action.objects.count()}')
-print(f'Deviations with attachments: {Deviation.objects.filter(attachment__isnull=False).count()}')
-"
-
-# Test file access
-curl -I http://localhost:8000/media/deviation_attachments/DEV24-0439.pdf
-```
-
-Expected output:
-```
-Users: 328
-Deviations: 21
-Actions: 11
-Deviations with attachments: 22
-```
-
-### Troubleshooting
-
-**Missing CSV/Excel files:**
-- Ensure `master_user_list.csv` and `Deviation_Matrix.xlsx` are in the `backend/` folder
-- Check file permissions are readable
-
-**PDF files not accessible:**
-- Verify PDF files are in `media/deviation_attachments/` directory
-- Check `MEDIA_ROOT` setting in `settings.py`
-- Ensure development server is running (`python manage.py runserver`)
-
-**Import command errors:**
-- Run `python manage.py migrate` first
-- Check that CSV/Excel files have the expected column headers
-- Verify Django dependencies are installed (`pip install -r requirements.txt`)
-
-**File linking issues:**
-- PDF filenames must start with deviation numbers (e.g., `DEV24-0439.pdf`)
-- Run `python manage.py link_attachments` after importing deviations
-
 ### Data Files Format
 
 **master_user_list.csv** should contain:
