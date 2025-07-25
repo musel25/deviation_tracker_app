@@ -1,7 +1,6 @@
-/* frontend/src/NewDeviationFormTest.css (Corrected Version) */
-
+/* --- Base Form Container & General Styles --- */
 .new-deviation-form-container {
-    background-color: #f0fff0; 
+    background-color: #f0fff0;
     margin: 20px auto;
     padding: 30px;
     max-width: 800px;
@@ -37,6 +36,7 @@
     font-size: 0.95em;
 }
 
+/* --- Form Field Grouping --- */
 .form-field-group {
     display: flex;
     flex-direction: column;
@@ -85,7 +85,7 @@
     text-align: center;
 }
 
-/* Checkbox rows */
+/* --- Checkbox Rows & Grids --- */
 .checkbox-row {
     display: flex;
     align-items: center;
@@ -108,7 +108,6 @@
     width: 200px;
 }
 
-/* Checkbox grid */
 .checkbox-grid-mock {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -127,7 +126,7 @@
     margin-bottom: 0;
 }
 
-/* Actions Section */
+/* --- Actions Section --- */
 .actions-section-mock {
     border: 1px dashed #ccc;
     padding: 15px;
@@ -218,7 +217,7 @@
     background-color: #c82333;
 }
 
-/* Drawing Table (Corrected Global Styles) */
+/* --- Drawing Table --- */
 .drawing-table-mock {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -265,7 +264,7 @@
     border-right: none;
 }
 
-/* Approvals */
+/* --- Approvals --- */
 .approval-fields {
     display: grid;
     grid-template-columns: 1fr;
@@ -297,7 +296,7 @@
     margin-top: 15px;
 }
 
-/* Description placeholder */
+/* --- Description Placeholder --- */
 .placeholder-text {
     font-style: italic;
     color: #888;
@@ -312,7 +311,7 @@
     justify-content: center;
 }
 
-/* Form buttons */
+/* --- Form Buttons --- */
 .form-buttons-group {
     display: flex;
     justify-content: flex-end;
@@ -353,7 +352,7 @@
     transform: translateY(-1px);
 }
 
-/* Responsive adjustments */
+/* --- Responsive Adjustments (General) --- */
 @media (max-width: 768px) {
     .new-deviation-form-container {
         padding: 15px;
@@ -388,14 +387,13 @@
     }
 }
 
-/* Image Editor */
+/* --- Image & Text Editor Specific Styles --- */
 .image-text-editor {
     border: 2px solid #38761d !important;
     border-radius: 8px !important;
     background-color: #ffffff !important;
     margin-top: 10px;
     padding: 20px;
-    background-color: #f9f9f9;
 }
 
 .image-text-editor .editor-section h4 {
@@ -418,8 +416,8 @@
 
 .image-text-editor .controls {
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
+    gap: 10px;
     align-items: center;
     margin-bottom: 15px;
 }
@@ -432,7 +430,7 @@
     color: white;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .image-text-editor .controls button:hover {
@@ -447,9 +445,16 @@
     background-color: #b71c1c !important;
 }
 
-.image-text-editor .canvas-container {
-    border: 2px dashed #38761d !important;
-    background-color: #fafafa;
+.image-text-editor .dynamic-controls {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.image-text-editor .dynamic-controls .hidden-button {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .image-text-editor .simple-rich-text-editor {
@@ -465,22 +470,151 @@
     background-color: #e8f5e8 !important;
 }
 
-/* Responsive image editor */
-@media (max-width: 768px) {
-    .image-text-editor .canvas-container {
-        overflow-x: auto;
-    }
+.selected-info-placeholder {
+    min-height: 2em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
 
-    .image-text-editor .controls {
-        flex-direction: column;
-        align-items: stretch;
-    }
+.selected-info {
+    font-weight: bold;
+    color: #007bff;
+}
 
-    .image-text-editor .text-input-group {
-        flex-direction: column;
-    }
+/* --- NEW STYLES FOR TEXT EDITING --- */
+.image-text-editor .controls button.active {
+    background-color: #0056b3 !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+}
 
-    .image-text-editor .text-input-group input {
-        margin-bottom: 10px;
-    }
+.image-text-editor .canvas-container {
+    position: relative; /* CRITICAL for positioning the textarea */
+    border: 2px dashed #38761d !important;
+    background-color: #fafafa;
+}
+
+/* --- NEW STYLES for Toolbar and Wrapper --- */
+
+.image-text-editor .canvas-container {
+  position: relative; /* This makes it the anchor for the absolute toolbar */
+  border: 2px dashed #38761d !important;
+  background-color: #fafafa;
+}
+
+/* --- CSS Changes for Toolbar --- */
+
+/* REMOVE all old .text-toolbar styles related to position: absolute/fixed, transform, opacity, etc. */
+
+/* New styles for the static toolbar */
+/* --- CSS Changes for New Toolbar --- */
+
+/* REMOVE all old .text-toolbar styles. */
+
+.text-toolbar {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #b0b0b0;
+  padding: 4px;
+  margin-bottom: 15px;
+  font-family: sans-serif;
+}
+
+.text-toolbar.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.text-toolbar.disabled * {
+  pointer-events: none;
+}
+
+.toolbar-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.separator {
+  width: 1px;
+  height: 24px;
+  background-color: #d0d0d0;
+  margin: 0 4px;
+}
+
+.text-toolbar select, .text-toolbar .font-size-input {
+  border: 1px solid #b0b0b0;
+  border-radius: 3px;
+  padding: 4px 6px;
+  background-color: #fff;
+  font-size: 14px;
+}
+.text-toolbar select:hover, .text-toolbar .font-size-input:hover {
+  border-color: #888;
+}
+
+.text-toolbar .font-size-input {
+  width: 45px;
+}
+
+.icon-button {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 4px 8px;
+  cursor: pointer;
+  min-width: 30px;
+}
+.icon-button:hover {
+  background-color: #e0e0e0;
+  border-color: #c0c0c0;
+}
+.icon-button.active {
+  background-color: #c9dfff;
+  border-color: #a0c0ff;
+}
+
+.icon-button.underline { text-decoration: underline; }
+.icon-button.strikethrough { text-decoration: line-through; }
+
+.color-picker-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+.color-picker-wrapper:hover {
+    background-color: #e0e0e0;
+    border-color: #c0c0c0;
+}
+.color-picker-wrapper span {
+    pointer-events: none; /* Allows click to go through to the input */
+}
+
+.color-picker-wrapper input[type="color"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Hide the color input, but keep it clickable */
+  cursor: pointer;
 }

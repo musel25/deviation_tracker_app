@@ -58,7 +58,7 @@ function NewDeviationFormTest() {
 
     const plantOptions = [
         "005 LAM", "008 BUY", "013E EEX", "013S STL", "019 AZU", "020MX NMD",
-        "025 OTYX", "026 ELG", "028 TUC", "041 NOG", "047 TUC", "CHINA"
+        "025 OTY", "026 ELG", "028 TUC", "041 NOG", "047 TUC", "CHINA"
     ];
     const businessUnitOptions = [
         "ACC", "AG", "BUY", "CNTL", "COM", "CP", "CTR", "GLF", "LND", "SMD/PMP"
